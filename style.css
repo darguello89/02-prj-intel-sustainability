@@ -1,1 +1,191 @@
-/* Add your CSS here */
+/* ============================================
+   Intel Sustainability Timeline Styles
+   ============================================ */
+
+/* === RESET & BASE STYLES === */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f5f5f5;
+  color: #333;
+}
+
+/* === HEADER / HERO SECTION === */
+.hero {
+  background: linear-gradient(135deg, #0071C5, #0095DA);
+  /* Intel Blue brand colors */
+  color: white;
+  text-align: center;
+  padding: 60px 20px;
+}
+
+.hero-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.logo {
+  /* Resize the Intel SVG logo */
+  width: 120px;
+  height: auto;
+  margin-bottom: 20px;
+}
+
+.hero h1 {
+  font-size: 2.5em;
+  margin-bottom: 15px;
+}
+
+.hero p {
+  font-size: 1.1em;
+  line-height: 1.6;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* === TIMELINE CONTAINER === */
+.timeline {
+  /* Horizontal scrolling layout for desktop */
+  display: flex;
+  overflow-x: auto;
+  /* Enable horizontal scrolling */
+  gap: 30px;
+  /* Space between cards */
+  padding: 40px 20px;
+  
+  /* Scroll snap for smooth scrolling */
+  scroll-snap-type: x mandatory;
+  /* Snap cards into view when scrolling */
+  scroll-behavior: smooth;
+}
+
+/* === TIMELINE CARDS === */
+.timeline-card {
+  /* Card dimensions */
+  min-width: 300px;
+  /* Minimum width for each card */
+  background-color: white;
+  border-radius: 12px;
+  /* Rounded corners */
+  padding: 25px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  /* Subtle shadow */
+  
+  /* Scroll snap alignment */
+  scroll-snap-align: start;
+  /* Snap to the start of each card */
+  
+  /* Transition for smooth hover effects */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Hover effect: lift the card and add shadow */
+.timeline-card:hover {
+  transform: scale(1.05);
+  /* Scale up slightly */
+  box-shadow: 0 8px 16px rgba(0, 113, 197, 0.3);
+  /* Blue shadow matching Intel brand */
+}
+
+/* === CARD CONTENT === */
+.year {
+  color: #0071C5;
+  /* Intel Blue */
+  font-size: 2em;
+  margin-bottom: 10px;
+}
+
+.title {
+  font-size: 1.3em;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.card-image {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  /* Ensure images fill space nicely */
+  border-radius: 8px;
+  margin-bottom: 15px;
+}
+
+/* Hide details by default, show on hover */
+.details {
+  max-height: 0;
+  /* Hide details initially */
+  overflow: hidden;
+  /* Prevent overflow */
+  opacity: 0;
+  /* Fade out */
+  transition: max-height 0.4s ease, opacity 0.4s ease;
+  /* Smooth reveal */
+  line-height: 1.6;
+  color: #555;
+}
+
+/* Show details when hovering over the card */
+.timeline-card:hover .details {
+  max-height: 300px;
+  /* Allow space for details */
+  opacity: 1;
+  /* Fade in */
+  margin-top: 10px;
+}
+
+/* === SCROLL HINT === */
+.scroll-hint {
+  text-align: center;
+  color: #0071C5;
+  font-size: 0.9em;
+  padding: 20px;
+  font-style: italic;
+}
+
+/* ============================================
+   RESPONSIVE DESIGN: MOBILE LAYOUT
+   ============================================ */
+
+/* For screens smaller than 768px (tablets and phones) */
+@media (max-width: 768px) {
+  
+  /* Stack timeline vertically on small screens */
+  .timeline {
+    flex-direction: column;
+    /* Stack cards vertically */
+    overflow-x: visible;
+    /* No horizontal scrolling */
+    align-items: center;
+    /* Center cards */
+  }
+  
+  .timeline-card {
+    min-width: 100%;
+    /* Full width cards */
+    max-width: 500px;
+    /* Limit width on larger tablets */
+  }
+  
+  .hero h1 {
+    font-size: 2em;
+    /* Smaller heading on mobile */
+  }
+  
+  .hero p {
+    font-size: 1em;
+  }
+  
+  /* Always show details on mobile (no hover) */
+  .details {
+    max-height: none;
+    /* Remove height restriction */
+    opacity: 1;
+    /* Always visible */
+    margin-top: 10px;
+  }
+}
